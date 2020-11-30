@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -52,3 +52,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['admin/dashboard'] = 'admin/a_dashboard';
+//Product
+$route['admin/product'] = 'admin/a_product';
+$route['admin/product/addForm'] = 'admin/a_product/addForm';
+$route['admin/product/add'] = 'admin/a_product/add';
+
+$route['admin/editProduct/(:any)'] = 'admin/a_product/edit/$i';
+
+$route['admin/deleteProduct/(:any)'] = 'admin/a_product/delete/$i';
+
+// Category
+$route['admin/category'] = 'admin/a_category';
+$route['admin/category/addForm'] = 'admin/a_category/addForm';
+$route['admin/category/add'] = 'admin/a_category/add';
+
+$route['admin/editCategory/(:any)'] = 'admin/a_category/editForm/$i';
+$route['admin/updateCategory/(:any)'] = 'admin/a_category/update/$i';
+
+$route['admin/deleteCategory/(:any)'] = 'admin/a_category/delete/$i';
+
+// Unit
+$route['admin/unit'] = 'admin/a_unit';
+$route['admin/unit/addForm'] = 'admin/a_unit/addForm';
+$route['admin/unit/add'] = 'admin/a_unit/add';
+
+$route['admin/editUnit/(:any)'] = 'admin/a_unit/editForm/$i';
+$route['admin/updateUnit/(:any)'] = 'admin/a_unit/update/$i';
+
+$route['admin/deleteUnit/(:any)'] = 'admin/a_unit/delete/$i';
