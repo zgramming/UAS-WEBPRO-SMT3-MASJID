@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin</title>
 
     <?php $this->load->view('template/admin/php_css'); ?>
 
@@ -59,8 +59,8 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <?php $this->load->view('template/admin/php_js'); ?>
 
 </body>
+<?php $this->load->view('template/admin/php_js'); ?>
 
 </html>

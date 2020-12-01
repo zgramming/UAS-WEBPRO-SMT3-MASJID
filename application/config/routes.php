@@ -49,18 +49,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'frontend/f_home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
+//! Backend
 $route['admin/dashboard'] = 'admin/a_dashboard';
 //Product
 $route['admin/product'] = 'admin/a_product';
 $route['admin/product/addForm'] = 'admin/a_product/addForm';
 $route['admin/product/add'] = 'admin/a_product/add';
 
-$route['admin/editProduct/(:any)'] = 'admin/a_product/edit/$i';
+$route['admin/editProduct/(:any)'] = 'admin/a_product/editForm/$i';
+$route['admin/updateProduct/(:any)'] = 'admin/a_product/update/$i';
 
 $route['admin/deleteProduct/(:any)'] = 'admin/a_product/delete/$i';
 
@@ -83,3 +84,6 @@ $route['admin/editUnit/(:any)'] = 'admin/a_unit/editForm/$i';
 $route['admin/updateUnit/(:any)'] = 'admin/a_unit/update/$i';
 
 $route['admin/deleteUnit/(:any)'] = 'admin/a_unit/delete/$i';
+
+
+//! Front End
