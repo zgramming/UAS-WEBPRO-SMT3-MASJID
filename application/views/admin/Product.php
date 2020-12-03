@@ -48,7 +48,9 @@
                               <td><?= $product->nameUnit ?></td>
                               <td><?= getAngka($product->price) ?></td>
                               <td><?= getAngka($product->qty) ?></td>
-                              <td><?= $product->information ?></td>
+                              <td>
+                                  <p class="text-ellipsis"><?= $product->information ?></p>
+                              </td>
                               <td align="center">
                                   <div class="btn-group" role="group" aria-label="Basic example">
                                       <button type="button" class="btn btn-danger" onclick="window.location='<?= base_url('admin/deleteProduct/' . $product->id_product) ?>'">Hapus</button>

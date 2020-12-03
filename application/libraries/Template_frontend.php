@@ -1,5 +1,5 @@
 <?php
-class TemplateFrontend
+class Template_frontend
 {
     protected $_ci;
 

@@ -19,6 +19,10 @@
                   <label for="information">Keterangan</label>
                   <textarea class="form-control" id="information" rows="3" name="information"></textarea>
               </div>
+              <div class="form-group">
+                  <label for="name">Order Position</label>
+                  <input type="text" class="form-control" id="order_position" name="order_position" value="<?= getAngka($lastOrderPosition) ?>" onkeyup="cekAngka(this)">
+              </div>
               <div class="float-right"><input type="submit" value="Simpan" class="btn btn-success"></div>
           </form>
       </div>

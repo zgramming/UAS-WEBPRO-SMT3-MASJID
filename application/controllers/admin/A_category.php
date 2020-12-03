@@ -26,7 +26,7 @@ class A_category extends CI_Controller
 
     public function addForm()
     {
-        $data = [];
+        $data['lastOrderPosition'] = $this->CategoryModel->getLastOrderPosition();
         $this->template->display('admin/category/new_form', $data, "Tambah Kategori");
     }
 
@@ -43,6 +43,7 @@ class A_category extends CI_Controller
     {
         $this->form_validation->set_rules('name', 'Nama Kategori', 'required');
         $this->form_validation->set_rules('information', 'Keterangan', 'required');
+        $this->form_validation->set_rules('order_position', 'Posisi', 'required');
 
         if ($this->form_validation->run() != FALSE) {
             $this->CategoryModel->add();
@@ -57,6 +58,8 @@ class A_category extends CI_Controller
         $data = [
             "name" => $this->input->post('name'),
             "information" => $this->input->post('information'),
+            "order_position" => $this->input->post('order_position'),
+            "updated_date" => date('Y-m-d H:i:s'),
         ];
         $this->db->where('id_category', $this->uri->segment(3));
         $this->db->update($this->_table, $data);
