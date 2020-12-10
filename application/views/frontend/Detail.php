@@ -10,7 +10,7 @@
                 <br>
                 <div class="d-flex justify-content-start">
                     <h4>Harga</h4>
-                    <h3 class="pl-5 text-danger"><b>Rp.<?= getAngka($product->price) ?></b></h3>
+                    <h3 class="pl-5"><b class="text-danger">Rp.<?= getAngka($product->price) ?> / </b><small><?=$product->nameUnit?></small></h3>
                 </div>
                 <br>
                 <div class="d-flex justify-content-start">
