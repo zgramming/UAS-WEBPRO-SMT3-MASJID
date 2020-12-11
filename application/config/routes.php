@@ -85,6 +85,57 @@ $route['admin/updateUnit/(:any)'] = 'admin/a_unit/update/$i';
 
 $route['admin/deleteUnit/(:any)'] = 'admin/a_unit/delete/$i';
 
+//* Khutbah
+$route['admin/khutbah'] = 'admin/a_khutbah';
+$route['admin/khutbah/addForm'] = 'admin/a_khutbah/addForm';
+$route['admin/khutbah/add'] = 'admin/a_khutbah/add';
+
+$route['admin/editKhutbah/(:any)'] = 'admin/a_khutbah/editForm/$i';
+$route['admin/updateKhutbah/(:any)'] = 'admin/a_khutbah/update/$i';
+
+$route['admin/deleteKhutbah/(:any)'] = 'admin/a_khutbah/delete/$i';
+//* Khutbah Category
+$route['admin/khutbah/category'] = 'admin/a_khutbah/category';
+$route['admin/khutbah/category/addForm'] = 'admin/a_khutbah/categoryAddForm';
+$route['admin/khutbah/category/add'] = 'admin/a_khutbah/categoryAdd';
+
+$route['admin/editCategoryKhutbah/(:any)'] = 'admin/a_khutbah/categoryEditForm/$i';
+$route['admin/updateCategoryKhutbah/(:any)'] = 'admin/a_khutbah/categoryUpdate/$i';
+
+$route['admin/deleteCategoryKhutbah/(:any)'] = 'admin/a_khutbah/categoryDelete/$i';
+
+//* Ustadz
+$route['admin/ustadz'] = 'admin/a_ustadz';
+
+$route['admin/ustadz/addForm'] = 'admin/a_ustadz/addForm';
+$route['admin/ustadz/add'] = 'admin/a_ustadz/add';
+
+$route['admin/deleteUstadz/(:any)'] = 'admin/a_ustadz/delete/$i';
+
+$route['admin/editUstadz/(:any)'] = 'admin/a_ustadz/editForm/$i';
+$route['admin/updateUstadz/(:any)'] = 'admin/a_ustadz/update/$i';
+
+//* Management
+$route['admin/management'] = 'admin/a_management';
+$route['admin/management/addForm'] = 'admin/a_management/addForm';
+$route['admin/management/add'] = 'admin/a_management/add';
+
+$route['admin/editManagement/(:any)'] = 'admin/a_management/editForm/$i';
+$route['admin/updateManagement/(:any)'] = 'admin/a_management/update/$i';
+
+$route['admin/deleteManagement/(:any)'] = 'admin/a_management/delete/$i';
+
+//* Jabatan Management
+$route['admin/management/category'] = 'admin/a_management/category';
+$route['admin/management/category/addForm'] = 'admin/a_management/categoryAddForm';
+$route['admin/management/category/add'] = 'admin/a_management/categoryAdd';
+
+$route['admin/editCategoryManagement/(:any)'] = 'admin/a_management/categoryEditForm/$i';
+$route['admin/updateCategoryManagement/(:any)'] = 'admin/a_management/categoryUpdate/$i';
+
+$route['admin/deleteCategoryManagement/(:any)'] = 'admin/a_management/categoryDelete/$i';
+
+
 
 //! Front End
 

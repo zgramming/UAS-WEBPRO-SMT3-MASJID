@@ -12,7 +12,7 @@
     <title>Admin</title>
 
     <?php $this->load->view('template/admin/php_css'); ?>
-
+    <?php $this->load->view('template/admin/php_js'); ?>
 
 </head>
 
@@ -61,6 +61,5 @@
     </a>
 
 </body>
-<?php $this->load->view('template/admin/php_js'); ?>
 
 </html>

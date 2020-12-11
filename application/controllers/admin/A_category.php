@@ -67,7 +67,6 @@ class A_category extends CI_Controller
     }
     public function delete()
     {
-
         $this->db->where('id_category', $this->uri->segment(3));
         $this->db->delete($this->_table);
         redirect(base_url('admin/category'));

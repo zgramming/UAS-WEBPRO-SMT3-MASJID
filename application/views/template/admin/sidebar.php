@@ -6,7 +6,7 @@
          <div class="sidebar-brand-icon rotate-n-15">
              <i class="fas fa-laugh-wink"></i>
          </div>
-         <div class="sidebar-brand-text mx-3">Makan Kondangan</div>
+         <div class="sidebar-brand-text mx-3">Majid Al-Barqarah</div>
      </a>
 
      <!-- Divider -->
@@ -44,10 +44,58 @@
      </li>
 
      <!-- Nav Item - Utilities Collapse Menu -->
+
+
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url('admin/ustadz') ?>">
+             <i class="fas fa-user"></i>
+             <span>Ustadz</span></a>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKhutbah" aria-expanded="true" aria-controls="collapseKhutbah">
+             <i class="fas fa-assistive-listening-systems"></i>
+             <span>Khutbah</span>
+         </a>
+         <div id="collapseKhutbah" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+                 <h6 class="collapse-header">Daftar Menu : </h6>
+                 <a class="collapse-item" href="<?= base_url('admin/khutbah') ?>">Khutbah</a>
+                 <a class="collapse-item" href="<?= base_url('admin/khutbah/category') ?>">Kategori Khutbah</a>
+             </div>
+         </div>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManagement" aria-expanded="true" aria-controls="collapseManagement">
+             <i class="fas fa-user-friends"></i>
+             Management </a>
+         <div id="collapseManagement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+                 <h6 class="collapse-header">Daftar Menu : </h6>
+                 <a class="collapse-item" href="<?= base_url('admin/management') ?>">Management</a>
+                 <a class="collapse-item" href="<?= base_url('admin/management/category') ?>">Jabatan Management</a>
+             </div>
+         </div>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="true" aria-controls="collapseInventory">
+             <i class="fas fa-boxes"></i>
+             Inventory </a>
+         <div id="collapseInventory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+                 <h6 class="collapse-header">Daftar Menu : </h6>
+                 <a class="collapse-item" href="<?= base_url('admin/khutbah') ?>">Inventory</a>
+                 <a class="collapse-item" href="<?= base_url('admin/khutbahCategory') ?>">Kategori Inventory</a>
+             </div>
+         </div>
+     </li>
+
      <li class="nav-item">
          <a class="nav-link" href="charts.html">
-             <i class="fas fa-hand-shake"></i>
-             <span>Transaksi</span></a>
+             <i class="fas fa-newspaper"></i>
+             <span>Berita</span></a>
      </li>
 
      <!-- Divider -->

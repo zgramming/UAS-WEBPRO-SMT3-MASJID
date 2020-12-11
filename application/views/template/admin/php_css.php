@@ -5,4 +5,5 @@
 
 <!-- Custom styles for this template-->
 <link href="<?= base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+<link href="<?= base_url('css/datepicker/bootstrap-datepicker.min.css') ?>" rel="stylesheet">
 <link href="<?= base_url('css/main.css') ?>" rel="stylesheet">

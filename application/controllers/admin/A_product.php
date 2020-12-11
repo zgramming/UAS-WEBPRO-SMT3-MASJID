@@ -9,8 +9,6 @@ class A_product extends CI_Controller
     protected $_tableCategory = "product_category";
     protected $_tableUnit = "product_unit";
 
-
-
     public function __construct()
     {
         parent::__construct();

@@ -18,5 +18,16 @@
  <!-- Datatable -->
  <script src="<?= base_url('vendor/datatables/jquery.dataTables.min.js') ?>"></script>
  <script src="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+ <script src="<?= base_url('js/datepicker/bootstrap-datepicker.min.js') ?>"></script>
 
  <script src="<?= base_url('js/main.js') ?>"></script>
+
+ <script type="text/javascript">
+     $(function() {
+         $(".datepicker").datepicker({
+             format: 'yyyy-mm-dd',
+             autoclose: true,
+             todayHighlight: true,
+         });
+     });
+ </script>
