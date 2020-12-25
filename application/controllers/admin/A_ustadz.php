@@ -32,9 +32,18 @@ class A_ustadz extends CI_Controller
         $this->form_validation->set_rules('birth_date', 'Tanggal Lahir', 'required');
 
         if ($this->form_validation->run() != FALSE) {
-            $data = $this->postData();
-            $this->db->insert($this->tblUstadz, $data);
-            redirect(base_url('admin/ustadz'));
+            $file = uploadFile("image", uniqid() . time(), $this->pathFile);
+
+            if (empty($file['error'])) {
+                $data = $this->postData();
+
+                $data += ["image" => $file];
+
+                $this->db->insert($this->tblUstadz, $data);
+                redirect(base_url('admin/ustadz'));
+            } else {
+                $this->addForm();
+            }
         } else {
             $this->addForm();
         }
@@ -50,6 +59,7 @@ class A_ustadz extends CI_Controller
 
     public function editForm()
     {
+
         $data['ustadz'] = $this->db->get_where($this->tblUstadz, ['id' => $this->uri->segment(3)])->row();
         $this->template->display('admin/ustadz/edit_form', $data, 'Ustadz');
     }
@@ -60,35 +70,40 @@ class A_ustadz extends CI_Controller
         $this->form_validation->set_rules('birth_date', 'Tanggal Lahir', 'required');
 
         if ($this->form_validation->run() == TRUE or FALSE) {
-            $data = $this->postData(true, "old_image");
-            $this->db->where('id', $this->uri->segment(3));
+            $file = uploadFile("image", $this->input->post('old_image'), $this->pathFile);
 
-            $this->db->update($this->tblUstadz, $data);
-            redirect(base_url('admin/ustadz'));
+            $data = $this->postData(true);
+            if (empty($file['error'])) {
+
+                $data += ["image" => $file];
+
+                $this->db->where('id', $this->uri->segment(3));
+
+                $this->db->update($this->tblUstadz, $data);
+                redirect(base_url('admin/ustadz'));
+            } else {
+                $this->editForm();
+            }
         } else {
             $this->editForm();
         }
     }
 
-    private function postData($isForUpdate = false, $oldImageName = null)
+    private function postData($isForUpdate = false)
     {
 
         if ($isForUpdate) {
-            $fileName = $this->input->post($oldImageName);
             $x = "updated_date";
         } else {
-            $fileName = uniqid() . time();
             $x = "created_date";
         }
-
-        $upload    = uploadFile("image", $fileName, $this->pathFile);
 
         $data = [
             "name" => $this->input->post('name'),
             "birth_date" => $this->input->post('birth_date'),
-            "image" => $upload ?: $fileName,
             $x => date('Y-m-d H:i:s'),
         ];
+
         return $data;
     }
 }
