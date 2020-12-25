@@ -2,11 +2,11 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/dashboard') ?>">
          <div class="sidebar-brand-icon rotate-n-15">
              <i class="fas fa-laugh-wink"></i>
          </div>
-         <div class="sidebar-brand-text mx-3">Majid Al-Barqarah</div>
+         <div class="sidebar-brand-text mx-3">Sistem Informasi Masjid</div>
      </a>
 
      <!-- Divider -->
@@ -28,7 +28,7 @@
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
-     <li class="nav-item">
+     <!-- <li class="nav-item">
          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
              <i class="fas fa-cart-arrow-down"></i>
              <span>Produk</span>
@@ -41,7 +41,7 @@
                  <a class="collapse-item" href="<?= base_url('admin/unit') ?>">Unit</a>
              </div>
          </div>
-     </li>
+     </li> -->
 
      <!-- Nav Item - Utilities Collapse Menu -->
 
@@ -86,16 +86,22 @@
          <div id="collapseInventory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
                  <h6 class="collapse-header">Daftar Menu : </h6>
-                 <a class="collapse-item" href="<?= base_url('admin/khutbah') ?>">Inventory</a>
-                 <a class="collapse-item" href="<?= base_url('admin/khutbahCategory') ?>">Kategori Inventory</a>
+                 <a class="collapse-item" href="<?= base_url('admin/inventory') ?>">Inventory</a>
+                 <a class="collapse-item" href="<?= base_url('admin/inventory/category') ?>">Kategori Inventory</a>
              </div>
          </div>
      </li>
 
      <li class="nav-item">
-         <a class="nav-link" href="charts.html">
+         <a class="nav-link" href="<?= base_url('admin/news') ?>">
              <i class="fas fa-newspaper"></i>
              <span>Berita</span></a>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url('admin/mosque') ?>">
+             <i class="fas fa-mosque"></i>
+             <span>Masjid</span></a>
      </li>
 
      <!-- Divider -->
