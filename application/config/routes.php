@@ -135,9 +135,56 @@ $route['admin/updateCategoryManagement/(:any)'] = 'admin/a_management/categoryUp
 
 $route['admin/deleteCategoryManagement/(:any)'] = 'admin/a_management/categoryDelete/$i';
 
+//* Inventory
+$route['admin/inventory'] = 'admin/a_inventory';
+$route['admin/inventory/addForm'] = 'admin/a_inventory/addForm';
+$route['admin/inventory/add'] = 'admin/a_inventory/add';
+
+$route['admin/editInventory/(:any)'] = 'admin/a_inventory/editForm/$i';
+$route['admin/updateInventory/(:any)'] = 'admin/a_inventory/update/$i';
+
+$route['admin/deleteInventory/(:any)'] = 'admin/a_inventory/delete/$i';
+
+//* Inventory Category
+$route['admin/inventory/category'] = 'admin/a_inventory/category';
+$route['admin/inventory/category/addForm'] = 'admin/a_inventory/categoryAddForm';
+$route['admin/inventory/category/add'] = 'admin/a_inventory/categoryAdd';
+
+$route['admin/editCategoryInventory/(:any)'] = 'admin/a_inventory/categoryEditForm/$i';
+$route['admin/updateCategoryInventory/(:any)'] = 'admin/a_inventory/categoryUpdate/$i';
+
+$route['admin/deleteCategoryInventory/(:any)'] = 'admin/a_inventory/categoryDelete/$i';
+
+//* News
+$route['admin/news'] = 'admin/a_news';
+$route['admin/news/addForm'] = 'admin/a_news/addForm';
+$route['admin/news/add'] = 'admin/a_news/add';
+
+$route['admin/editNews/(:any)'] = 'admin/a_news/editForm/$i';
+$route['admin/updateNews/(:any)'] = 'admin/a_news/update/$i';
+
+$route['admin/deleteNews/(:any)'] = 'admin/a_news/delete/$i';
+
+//* Mosque
+$route['admin/mosque'] = 'admin/a_mosque';
+$route['admin/updateMosque/(:any)'] = 'admin/a_mosque/update/$i';
+// $route['admin/news/addForm'] = 'admin/a_news/addForm';
+// $route['admin/news/add'] = 'admin/a_news/add';
+
+// $route['admin/editNews/(:any)'] = 'admin/a_news/editForm/$i';
+// $route['admin/updateNews/(:any)'] = 'admin/a_news/update/$i';
+
+// $route['admin/deleteNews/(:any)'] = 'admin/a_news/delete/$i';
 
 
 //! Front End
 
 $route['home'] = 'frontend/f_home';
+$route['khutbah/(:any)'] = 'frontend/f_home/khutbah/$i';
+$route['news/(:any)'] = 'frontend/f_home/news/$i';
+$route['inventory'] = 'frontend/f_home/inventory';
+
+
+$route['sendSuggestion'] = 'frontend/f_home/addSuggestion';
+
 $route['detail/(:any)'] = 'frontend/f_home/detail/$i';
