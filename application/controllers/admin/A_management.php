@@ -35,9 +35,17 @@ class A_management extends CI_Controller
 
 
         if ($this->form_validation->run() == TRUE) {
-            $data = $this->postData();
-            $this->db->insert($this->tblManagement, $data);
-            redirect(base_url('admin/management'));
+
+            $file = uploadFile("image", uniqid() . time(), $this->pathFile);
+            if (empty($file['error'])) {
+                $data = $this->postData();
+                $data += ["image" => $file];
+
+                $this->db->insert($this->tblManagement, $data);
+                redirect(base_url('admin/management'));
+            } else {
+                $this->addForm();
+            }
         } else {
             $this->addForm();
         }
@@ -64,10 +72,17 @@ class A_management extends CI_Controller
         $this->form_validation->set_rules('birth_date', 'Tanggal Lahir', 'required');
 
         if ($this->form_validation->run() == TRUE) {
-            $data = $this->postData(true, 'old_image');
-            $this->db->where('id', $this->uri->segment(3));
-            $this->db->update($this->tblManagement, $data);
-            redirect(base_url('admin/management'));
+            $file = uploadFile("image", $this->input->post('old_image'), $this->pathFile);
+            if (empty($file['error'])) {
+
+                $data = $this->postData(true, 'old_image');
+                $data += ['image' => $file];
+                $this->db->where('id', $this->uri->segment(3));
+                $this->db->update($this->tblManagement, $data);
+                redirect(base_url('admin/management'));
+            } else {
+                $this->editForm();
+            }
         } else {
             $this->editForm();
         }
@@ -125,23 +140,18 @@ class A_management extends CI_Controller
         }
     }
 
-    private function postData($isForUpdate = false, $oldImageName = null)
+    private function postData($isForUpdate = false)
     {
         if ($isForUpdate) {
-            $fileName = $this->input->post($oldImageName);
             $x = "updated_date";
         } else {
             $x = "created_date";
-            $fileName = uniqid() . time();
         }
-
-        $upload    = uploadFile("image", $fileName, $this->pathFile);
 
         $data = [
             "name" => $this->input->post('name'),
             "id_management_category" => $this->input->post('id_management_category'),
             "birth_date" => $this->input->post('birth_date'),
-            "image" => $upload ?: $fileName,
             $x => date('Y-m-d H:i:s'),
         ];
         return $data;
