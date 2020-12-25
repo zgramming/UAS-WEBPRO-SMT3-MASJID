@@ -77,7 +77,7 @@ class A_khutbah extends CI_Controller
         }
     }
 
-    //! Kategori
+    //* Kategori
 
     public function category()
     {
