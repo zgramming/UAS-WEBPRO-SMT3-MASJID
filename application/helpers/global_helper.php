@@ -53,21 +53,30 @@ function setTanggal($tanggal)
     return $hasil;
 }
 
-function uploadFile($inputName = null, $fileName = null, $path = null, $extensionAllow = "gif|jpg|png|jpeg")
+function uploadFile($inputName = null, $fileName = null, $path = null)
 {
     $ci = &get_instance();
     $config['upload_path']          = $path;
-    $config['allowed_types']        = $extensionAllow;
+    $config['allowed_types']        = "*";
     $config['file_name']            = $fileName;
     $config['overwrite']            = true;
-    $config['max_size']             = 1024; // 1MB
+    $config['max_size']             = 10024; // 1MB
+
+
+    // $config['upload_path'] = './uploads/';
+    // $config['allowed_types'] = 'gif|jpg|png';
+    // $config['max_size']  = '100';
+    // $config['max_width']  = '1024';
+    // $config['max_height']  = '768';
 
     $ci->load->library('upload', $config);
 
-    if ($ci->upload->do_upload($inputName)) {
-        return $ci->upload->data("file_name");
+    if (!$ci->upload->do_upload($inputName)) {
+        $error = array('error' => $ci->upload->display_errors());
+        return $error;
     } else {
-        return null;
+        $data = array('upload_data' => $ci->upload->data("file_name"));
+        return $data['upload_data'];
     }
 }
 
