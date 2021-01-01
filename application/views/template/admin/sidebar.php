@@ -115,7 +115,13 @@
      <!-- Nav Item - Pages Collapse Menu -->
 
      <li class="nav-item">
-         <a class="nav-link" href="charts.html">
+         <a class="nav-link" href="<?= base_url('admin/user-akses') ?>">
+             <i class="fas fa-users-cog"></i>
+             <span>User</span></a>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link" href="<?= base_url("admin/logout") ?>">
              <i class="fas fa-sign-out-alt"></i>
              <span>Keluar</span></a>
      </li>
