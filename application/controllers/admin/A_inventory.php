@@ -34,19 +34,22 @@ class A_inventory extends CI_Controller
         $this->form_validation->set_rules('kode', 'Kode', 'required');
         $this->form_validation->set_rules('stock', 'Stok', 'required');
 
-
-        if ($this->form_validation->run() == TRUE) {
-            $data = $this->postData();
-
-            $file = uploadFile("image", uniqid() . time(), $this->pathFile);
-
-            if (empty($file['error'])) $data += ['image' => $file];
-
-            $this->db->insert($this->tblInven, $data);
-            redirect(base_url('admin/inventory'));
-        } else {
-            $this->addForm();
+        if ($this->form_validation->run() == FALSE) {
+            return $this->addForm();
         }
+        $data = $this->postData();
+
+        $file  = uploadFile("image", uniqid() . time(), $this->pathFile);
+
+        if (!empty($file['error'])) {
+            $this->session->set_flashdata('error_file', $file['error']);
+            return $this->addForm();
+        }
+
+        $data += ["image" => $file];
+
+        $this->db->insert($this->tblInven, $data);
+        return redirect(base_url('admin/inventory'));
     }
 
     public function delete()
@@ -71,18 +74,27 @@ class A_inventory extends CI_Controller
         $this->form_validation->set_rules('stock', 'Stok', 'required');
 
 
-        if ($this->form_validation->run() == TRUE) {
-            $data = $this->postData(true);
-            $file = uploadFile("image", $this->input->post('old_image'), $this->pathFile);
-
-            if (empty($file['error'])) $data += ['image' => $file];
-
-            $this->db->where('id', $this->uri->segment(3));
-            $this->db->update($this->tblInven, $data);
-            redirect(base_url('admin/inventory'));
-        } else {
-            $this->editForm();
+        if ($this->form_validation->run() == FALSE) {
+            return $this->editForm();
         }
+        $data = $this->postData(true);
+
+        $file = $this->input->post('old_image');
+
+        if (!empty($_FILES['image']['name'])) {
+            $file = uploadFile("image", $file, $this->pathFile);
+
+            if (!empty($file['error'])) {
+                $this->session->set_flashdata('error_file', $file['error']);
+                return $this->editForm();
+            }
+        }
+
+        $data += ["image" => $file];
+
+        $this->db->where('id', $this->uri->segment(3));
+        $this->db->update($this->tblInven, $data);
+        return redirect(base_url('admin/inventory'));
     }
 
     public function updateStockCorrupt()

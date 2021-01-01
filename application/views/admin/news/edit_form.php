@@ -10,6 +10,8 @@
       </div>
       <div class="card-body">
           <center><?= validation_errors() ?></center>
+          <center><?= $this->session->flashdata('error_file') ?: "" ?></center>
+
           <form action="<?= base_url('admin/updateNews/' . $news->id) ?>" method="post" enctype="multipart/form-data">
 
               <div class="form-group">

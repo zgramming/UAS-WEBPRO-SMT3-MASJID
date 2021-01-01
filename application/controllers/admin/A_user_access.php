@@ -1,6 +1,4 @@
 <?php
-
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class A_user_access extends CI_Controller
@@ -80,11 +78,11 @@ class A_user_access extends CI_Controller
 
         if (!empty($_FILES['image']['name'])) {
             $file = uploadFile("image", $file, $this->pathFile);
-        }
 
-        if (!empty($file['error'])) {
-            $this->session->set_flashdata('error_file', $file['error']);
-            return $this->editForm();
+            if (!empty($file['error'])) {
+                $this->session->set_flashdata('error_file', $file['error']);
+                return $this->editForm();
+            }
         }
 
         $data += ["image" => $file];

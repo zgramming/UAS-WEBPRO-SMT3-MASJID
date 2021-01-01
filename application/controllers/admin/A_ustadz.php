@@ -32,22 +32,21 @@ class A_ustadz extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama', 'required');
         $this->form_validation->set_rules('birth_date', 'Tanggal Lahir', 'required');
 
-        if ($this->form_validation->run() != FALSE) {
-            $file = uploadFile("image", uniqid() . time(), $this->pathFile);
 
-            if (empty($file['error'])) {
-                $data = $this->postData();
-
-                $data += ["image" => $file];
-
-                $this->db->insert($this->tblUstadz, $data);
-                redirect(base_url('admin/ustadz'));
-            } else {
-                $this->addForm();
-            }
-        } else {
-            $this->addForm();
+        if ($this->form_validation->run() ==  FALSE) {
+            return $this->addForm();
         }
+        $data = $this->postData();
+
+        $file = uploadFile("image", uniqid() . time(), $this->pathFile);
+
+        if (!empty($file['error'])) {
+            $this->session->set_flashdata('error_file', $file['error']);
+        }
+        $data += ["image" => $file];
+
+        $this->db->insert($this->tblUstadz, $data);
+        return redirect(base_url('admin/ustadz'));
     }
 
     public function delete()
@@ -55,7 +54,7 @@ class A_ustadz extends CI_Controller
         deleteImage($this->tblUstadz, ["id" => $this->uri->segment(3)], "image", $this->pathFile);
         $this->db->where('id', $this->uri->segment(3));
         $this->db->delete($this->tblUstadz);
-        redirect(base_url('admin/ustadz'));
+        return redirect(base_url('admin/ustadz'));
     }
 
     public function editForm()
@@ -70,24 +69,28 @@ class A_ustadz extends CI_Controller
         $this->form_validation->set_rules('name', 'Nama', 'required');
         $this->form_validation->set_rules('birth_date', 'Tanggal Lahir', 'required');
 
-        if ($this->form_validation->run() == TRUE or FALSE) {
-            $file = uploadFile("image", $this->input->post('old_image'), $this->pathFile);
-
-            $data = $this->postData(true);
-            if (empty($file['error'])) {
-
-                $data += ["image" => $file];
-
-                $this->db->where('id', $this->uri->segment(3));
-
-                $this->db->update($this->tblUstadz, $data);
-                redirect(base_url('admin/ustadz'));
-            } else {
-                $this->editForm();
-            }
-        } else {
-            $this->editForm();
+        if ($this->form_validation->run() ==  FALSE) {
+            return $this->editForm();
         }
+        $data = $this->postData();
+
+        $file = $this->input->post('old_image');
+
+        if (!empty($_FILES['image']['name'])) {
+            $file = uploadFile("image", $file, $this->pathFile);
+
+            if (!empty($file['error'])) {
+                $this->session->set_flashdata('error_file', $file['error']);
+                return $this->editForm();
+            }
+        }
+
+        $data += ["image" => $file];
+
+        $this->db->where('id', $this->uri->segment(3));
+
+        $this->db->update($this->tblUstadz, $data);
+        return redirect(base_url('admin/ustadz'));
     }
 
     private function postData($isForUpdate = false)
