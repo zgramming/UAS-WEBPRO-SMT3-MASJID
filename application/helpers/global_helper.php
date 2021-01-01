@@ -57,10 +57,10 @@ function uploadFile($inputName = null, $fileName = null, $path = null)
 {
     $ci = &get_instance();
     $config['upload_path']          = $path;
-    $config['allowed_types']        = "*";
+    $config['allowed_types']        = "jpg|jpeg|png";
     $config['file_name']            = $fileName;
     $config['overwrite']            = true;
-    $config['max_size']             = 10024; // 1MB
+    $config['max_size']             = 10024; // 10MB
 
 
     // $config['upload_path'] = './uploads/';
@@ -89,4 +89,11 @@ function deleteImage($table, $where, $fieldName, $path)
         $filename = explode(".", $data->$fieldName)[0];
         return array_map('unlink', glob(FCPATH . "$path/$filename.*"));
     }
+}
+
+function checkSession()
+{
+    $ci = &get_instance();
+    $session = $ci->session->userdata("user");
+    if (empty($session)) return redirect("admin/login");
 }
