@@ -198,13 +198,19 @@
                     data: data,
                     success: function(data) {
                         let result = $.parseJSON(data);
-                        alert(result);
+                        console.log(result);
+                        Swal.fire({
+                            icon: "success",
+                            title: result.message
+                        });
                         $("#email").val('');
                         $("#suggestion").val('');
                     },
                     error: function(error) {
                         if (error.status == '400') {
                             var jsonError = $.parseJSON(error.responseText);
+                            console.log(jsonError.message);
+
                             Swal.fire({
                                 icon: "error",
                                 title: jsonError.message,
@@ -212,7 +218,8 @@
                             })
 
                         }
-                    }
+                    },
+
                 });
             });
         });
