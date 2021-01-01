@@ -43,3 +43,16 @@
 
     height: 40px;/* Fallback for non-webkit */
 }
+
+body {
+    position: relative;
+}
+
+.bg-webapp {
+    background-color: #0353A4 !important;
+}
+
+.text-webapp {
+    color: #0353A4 !important;
+
+}
