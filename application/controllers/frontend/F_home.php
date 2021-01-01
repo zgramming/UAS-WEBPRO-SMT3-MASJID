@@ -57,7 +57,8 @@ class F_home extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $this->output->set_status_header('400');
-            $this->data['message'] = validation_errors();
+            
+            $this->data['message'] = array_values($this->form_validation->error_array())[0];
         } else {
             $data = [
                 "email" => $this->input->post('email'),
@@ -66,7 +67,7 @@ class F_home extends CI_Controller
             ];
             $this->db->insert($this->tblSuggestion, $data);
 
-            $this->data['message'] = "Berhasil mengirimkan masukkan";
+            $this->data['message'] = "Terimakasih sudah meluangkan waktu untuk mengirimkan sarannya";
         }
 
         echo json_encode($this->data);
