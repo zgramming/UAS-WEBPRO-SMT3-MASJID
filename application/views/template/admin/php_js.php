@@ -19,6 +19,8 @@
  <script src="<?= base_url('vendor/datatables/jquery.dataTables.min.js') ?>"></script>
  <script src="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
  <script src="<?= base_url('js/datepicker/bootstrap-datepicker.min.js') ?>"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
  <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 
  <script src="<?= base_url('js/main.js') ?>"></script>
@@ -32,4 +34,14 @@
          });
 
      });
+
+     function showModal(idModal) {
+         $("#" + idModal).modal('show');
+         //  return data;
+
+     }
+
+     function closeModal(idModal) {
+         $("#" + idModal).modal('hide');
+     }
  </script>
