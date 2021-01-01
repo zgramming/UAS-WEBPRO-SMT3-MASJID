@@ -1,1 +1,3 @@
-<h1>testststasdsadasdada</h1>
+<?php
+$session = $this->session->userdata("user");
+var_dump($session);
