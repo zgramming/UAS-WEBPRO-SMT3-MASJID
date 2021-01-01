@@ -13,6 +13,7 @@ class A_management extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        checkSession();
         $this->load->model('admin/a_management_model', 'ManagementModel');
     }
 

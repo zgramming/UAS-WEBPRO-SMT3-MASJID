@@ -12,6 +12,7 @@ class A_news extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        checkSession();
         $this->load->model('admin/a_news_model', 'NewsModel');
     }
 

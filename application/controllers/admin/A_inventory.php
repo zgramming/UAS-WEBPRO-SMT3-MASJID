@@ -11,6 +11,7 @@ class A_inventory extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        checkSession();
         $this->load->model('admin/a_inventory_model', 'InventoryModel');
     }
 
@@ -82,6 +83,26 @@ class A_inventory extends CI_Controller
         } else {
             $this->editForm();
         }
+    }
+
+    public function updateStockCorrupt()
+    {
+
+        $this->form_validation->set_rules('inp[stock_corrupt]', 'Stok Rusak', 'required|integer|is_natural');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->output->set_status_header('400');
+            $this->data['message'] = array_values($this->form_validation->error_array())[0];
+        } else {
+            $data = [
+                "stock_corrupt" => $this->input->post("inp[stock_corrupt]"),
+            ];
+
+            $this->db->where('id', $this->input->post('inp[id]'));
+            $this->db->update($this->tblInven, $data);
+            $this->data['message'] = "Stok rusak berhasil diperbaharui";
+        }
+        echo json_encode($this->data);
     }
 
     //* Category

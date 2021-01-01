@@ -12,6 +12,7 @@ class A_mosque extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        checkSession();
         $this->load->model('admin/a_mosque_model', "MosqueModel");
 
         $mosque = $this->db->get($this->_tableMosque)->result_array();
@@ -48,8 +49,8 @@ class A_mosque extends CI_Controller
         if ($this->form_validation->run() == TRUE or FALSE) {
             $file = uploadFile("background_image", $this->input->post('old_image'), $this->pathFile);
             $data = $this->postData(true);
-            
-            if(empty($file['error'])) $data+=['background_image'=>$file];
+
+            if (empty($file['error'])) $data += ['background_image' => $file];
 
             $this->db->where('id', $mosque->id);
 
