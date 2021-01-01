@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //! Backend
+$route['admin'] = 'admin/a_dashboard';
 $route['admin/dashboard'] = 'admin/a_dashboard';
 //Product
 $route['admin/product'] = 'admin/a_product';
@@ -142,6 +143,7 @@ $route['admin/inventory/add'] = 'admin/a_inventory/add';
 
 $route['admin/editInventory/(:any)'] = 'admin/a_inventory/editForm/$i';
 $route['admin/updateInventory/(:any)'] = 'admin/a_inventory/update/$i';
+$route['admin/updateStockCorrupt/(:any)'] = 'admin/a_inventory/updateStockCorrupt/$i';
 
 $route['admin/deleteInventory/(:any)'] = 'admin/a_inventory/delete/$i';
 
@@ -168,6 +170,22 @@ $route['admin/deleteNews/(:any)'] = 'admin/a_news/delete/$i';
 //* Mosque
 $route['admin/mosque'] = 'admin/a_mosque';
 $route['admin/updateMosque/(:any)'] = 'admin/a_mosque/update/$i';
+
+//* User Access
+$route['admin/user-akses'] = 'admin/a_user_access';
+$route['admin/user-akses/addForm'] = 'admin/a_user_access/addForm';
+$route['admin/user-akses/add'] = 'admin/a_user_access/add';
+
+$route['admin/editUser/(:any)'] = 'admin/a_user_access/editForm/$i';
+$route['admin/updateUser/(:any)'] = 'admin/a_user_access/update/$i';
+
+$route['admin/deleteUser/(:any)'] = 'admin/a_user_access/delete/$i';
+
+//* Login Admin
+$route['admin/login'] = 'admin/a_authentication';
+$route['admin/auth'] = 'admin/a_authentication/login';
+$route['admin/logout'] = 'admin/a_authentication/logout';
+
 // $route['admin/news/addForm'] = 'admin/a_news/addForm';
 // $route['admin/news/add'] = 'admin/a_news/add';
 
